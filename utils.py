@@ -27,9 +27,9 @@ def imsave(image, path, fname):
 
 # Save ground truth image, bicubic interpolated image and srcnn image
 def save_result(path, gt, bicubic, srcnn, i):
-    imsave(gt, path, str(i)+ '_gt.png')
-    imsave(bicubic, path, str(i) + '_bicubic.png')
-    imsave(srcnn, path, str(i) + '_vdsr.png')
+    imsave(gt, path + '/gt', i)
+    imsave(bicubic, path + '/bic', i)
+    imsave(srcnn, path + '/gen', i)
 
 
 # Return true if the h5 sub-images file is exists
