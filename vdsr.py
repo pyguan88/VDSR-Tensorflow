@@ -203,7 +203,8 @@ class VDSR():
         test_path = os.path.join(self.TEST_DATASET_PATH, self.TEST_DATASET)
 
         test_images, test_labels = prepare_data(path=test_path, scale=self.scale)
-
+        path_gt = os.path.join(test_path, 'gt')
+        fnames = os.listdir(path_gt)
         self.input_t = tf.placeholder(tf.float32, [None, None, None, 1], name='images')
         self.label_t = tf.placeholder(tf.float32, [None, None, None, 1], name='labels')
 
@@ -257,7 +258,7 @@ class VDSR():
                 if not os.path.exists(path):
                     os.makedirs(path)
 
-                save_result(path, gt, bicubic, result, idx)
+                save_result(path, gt, bicubic, result, fnames[idx])
         
         print('[*] Test dataset: [{}], upscale factor: [X{:d}]'.format(self.TEST_DATASET, self.scale))
         print('[*] PSNR value of ground truth and bicubic : {:.2f}'.format(np.mean(bicubic_psnr)))
