@@ -254,7 +254,7 @@ class VDSR():
                 result = concat_ycrcb(output[0], test_input_cbcr[0])
                 
                 path = os.path.join(os.getcwd(), self.RESULT_DIR)
-                path = os.path.join(path, t)
+                # path = os.path.join(path, t)
                 if not os.path.exists(path):
                     os.makedirs(path)
 
