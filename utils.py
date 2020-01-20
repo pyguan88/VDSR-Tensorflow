@@ -17,6 +17,8 @@ def imread(fname):
 
 # Save image
 def imsave(image, path, fname):
+    if not os.path.exists(path):
+        os.makedirs(path)
     image = image * 255.
     
     image = Image.fromarray(image.astype('uint8'), mode='YCbCr')
